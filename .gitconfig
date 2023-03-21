@@ -1,0 +1,15 @@
+[user]
+    name = Umut, Tosun
+    email = tosun.umutt@gmail.com
+    password = okul1905A
+[http]
+    sslVerify = false
+    proxy = 
+[https]
+    sslverify = false
+    proxy = https://corp\\<uname>:<password>@<proxyhost>:<proxy-port>
+[push]
+    default = simple
+[credential]
+    helper = cache --timeout=360000000
+[core]
