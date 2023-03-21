@@ -9,7 +9,7 @@ import { ProductsService } from '../products.service';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-  @Input() product: Product | any;
+  @Input() product?: Product;
   constructor(
     private productService: ProductsService,
     private route: ActivatedRoute) {

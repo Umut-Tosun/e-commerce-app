@@ -3,7 +3,7 @@
   <div class="col-lg-3 col-md-4 col-sm-6 mb-4 ms-5" *ngFor="let product of productList">
     <div class="card h-100">
       <div class="card-header">
-        <img src="https://img-monsternotebook.mncdn.com/UPLOAD/urun-gorselleri-yeni/a5-V19.1-resimler/thumb/V19.X-3050-TI-EKRANKART_small.png" class="card-img-top" />
+        <img src="{{product.ImagePath}}" class="card-img-top" />
       </div>
       <div class="card-body">
         <span class="badge bg-primary mb-2">{{product.Category.Name}}</span>
