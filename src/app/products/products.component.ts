@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Product } from '../model/Product';
 import {ProductsService} from '../products.service'
-import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
