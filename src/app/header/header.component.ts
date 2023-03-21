@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CartList } from '../model/Cart.DataSource';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-
+  CartLength(){
+    return CartList.filter(x=>x.Status==true).length;
+  }
 }
