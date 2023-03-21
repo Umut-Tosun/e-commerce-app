@@ -8,6 +8,7 @@ import { SliderComponent } from './slider/slider.component';
 import { ProductsComponent } from './products/products.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     SliderComponent,
     ProductsComponent,
     CategoriesComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
