@@ -6,13 +6,13 @@
         <img src="{{product.ImagePath}}" class="card-img-top" />
       </div>
       <div class="card-body">
-        <span class="badge bg-primary mb-2">{{product.Category.Name}}</span>
+        <span class="badge bg-{{product.Category.Color}} mb-2">{{product.Category.Name}}</span>
         <h5 class="card-title">{{ product.Name }}</h5>
         <h3 class="card-text">{{ product.UnitPrice }}₺</h3>
       </div>
       <div class="card-footer text-center">
           <div class="container">
-            <button class="btn btn-primary btn-lg" routerLink="/productDetail/{{ product.Id }}">Sepete Ekle</button>
+            <button class="btn btn-outline-{{product.Category.Color}} btn-lg" routerLink="/productDetail/{{ product.Id }}">Sepete Ekle</button>
           </div>
       </div>
     </div>

@@ -6,17 +6,16 @@
     </div>
     <div class="col-6 ps-4">
         <span>Stock: {{product?.Stock}}</span>
-    
-        <p>
-            {{product?.Description}}
-        </p>
+
+            <div class="mt-3 mb-3" innerHTML="{{product?.Description}}"></div>
+       
         <div class="input-group mb-3 stock">
             <button class="btn btn-primary" type="button "  id="button-addon1">-</button>
-            <input type="number" min="0" max="{{product?.Stock}}"#Quantity   class=" text-center bg-white text-primary" disabled placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+            <input type="number" min="0" max="{{product?.Stock}}" value="1" #Quantity   class=" text-center bg-white text-primary" disabled placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
             <button class="btn btn-primary" type="button"  id="button-addon1">+</button>
 
         </div>
         <button class="btn btn-primary">Sepete Ekle</button>
-
+        <button class="btn btn-danger ms-2" routerLink="">Alışverişe Devam Et</button>
     </div>
 </div>
