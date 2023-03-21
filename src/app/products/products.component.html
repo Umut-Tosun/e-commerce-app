@@ -1,3 +1,4 @@
+<app-slider></app-slider><br/><br/><br/><br/>
 <div class="row my-5 ms-5 me-5 justify-content-center">
   <div class="col-lg-3 col-md-4 col-sm-6 mb-4 ms-5" *ngFor="let product of productList">
     <div class="card h-100">
@@ -11,7 +12,7 @@
       </div>
       <div class="card-footer text-center">
           <div class="container">
-            <button class="btn btn-primary btn-lg">Sepete Ekle</button>
+            <button class="btn btn-primary btn-lg" routerLink="/productDetail/{{ product.Id }}">Sepete Ekle</button>
           </div>
       </div>
     </div>
