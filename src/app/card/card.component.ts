@@ -56,12 +56,13 @@ export class CardComponent {
     })
     return this.totalPrice;
   }
-
+   
   confirmOrder() {
     OrderList.push(new Order(OrderList.length + 1, UserList[UserList.findIndex((user) => user == authUser[0])], CartList.filter(x => x.Status == true), this.totalPrice))
 
     CartList.filter(x => x.Status == true).forEach((cart) => {
       cart.Status = false;
+      cart.Product.Stock-=Number(cart.Quantity);
     })
   }
 

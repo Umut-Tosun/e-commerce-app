@@ -44,7 +44,7 @@ export class ProductDetailComponent implements OnInit {
   plusBasketCounter() { this.basketCounter++; }
 
 
-  addBasket(product?: Product, quantity?: any) {
+  addBasket(product: any, quantity?: any) {
     CartList.filter(x => x.Status == true).forEach((item) => {
       if (item.Product?.Id == product?.Id) this.isNewProduct = false;
     })
@@ -54,14 +54,20 @@ export class ProductDetailComponent implements OnInit {
       if (authUser.length > 0) //sistemde kullanıcı varsa
         CartList.push(new Cart(CartList.length + 1, authUser[0], product, quantity, Number(product?.UnitPrice) * Number(quantity), true));
       else { //sistemde kullanıcı yoksa default guest user veriyoruz
-        CartList.push(new Cart(CartList.length + 1, UserList[2] , product, quantity, Number(product?.UnitPrice) * Number(quantity), true));
+        CartList.push(new Cart(CartList.length + 1, UserList[2], product, quantity, Number(product?.UnitPrice) * Number(quantity), true));
       }
 
       this.basketCounter = 1;
 
     }
     else {
-      this.index = CartList.filter((cart) => cart.Status == true).findIndex((item) => item.Product?.Id == product?.Id);
+      //userı buluyoruz 
+      if (authUser.length > 0) {
+        this.index = CartList.filter((cart) => cart.Status == true&&cart.user==authUser[0]).findIndex((item) => item.Product.Id == product?.Id);
+      }
+      else{
+        this.index = CartList.filter((cart) => cart.Status == true &&cart.user==UserList[2]).findIndex((item) => item.Product?.Id == product?.Id);
+      }
 
       //stock control
       if (Number(CartList[this.index].Quantity) + Number(quantity) <= Number(product?.Stock)) {
