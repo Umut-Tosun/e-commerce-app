@@ -5,13 +5,13 @@
                 <div class="card">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="{{cart.Product?.ImagePath}}" class="img-fluid">
+                            <img src="{{cart.Product.ImagePath}}" class="img-fluid">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title fs-4">{{cart.Product?.Name}}</h5>
-                                <p class="card-text">{{cart.Product?.Description}}</p>
-                                <p class="card-text fs-5"><strong>Stok: </strong>{{cart.Product?.Stock}}</p>
+                                <h5 class="card-title fs-4">{{cart.Product.Name}}</h5>
+                                <p class="card-text" [innerHTML]="cart.Product.Description"></p>
+                                <p class="card-text fs-5"><strong>Stok: </strong>{{cart.Product.Stock}}</p>
 
 
                                 <div style="display: flex;">
@@ -19,13 +19,13 @@
 
                                     <div class="ms-2">
                                         <button class="btn btn-primary btn-sm" type="button" id="button-addon1"
-                                            (click)="minusBasket(cart.Product?.Id)">-</button>
-                                        <input type="number" min="1" max="{{cart.Product?.Stock}}" #Quantity
+                                            (click)="minusBasket(cart.Product.Id)">-</button>
+                                        <input type="number" min="1" max="{{cart.Product.Stock}}" #Quantity
                                             value="{{cart.Quantity}}" class="text-center bg-white text-primary" disabled
                                             placeholder="" aria-label="Example text with button addon"
                                             aria-describedby="button-addon1">
                                         <button class="btn btn-primary btn-sm" type="button"
-                                            (click)="plusBasket(cart.Product?.Id)" id="button-addon1">+</button>
+                                            (click)="plusBasket(cart.Product.Id)" id="button-addon1">+</button>
                                     </div>
                                 </div>
 

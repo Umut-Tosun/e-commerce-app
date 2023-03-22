@@ -13,20 +13,21 @@
                   <div *ngFor="let cartItem of getCarts(orderIndex);" class="col-sm-12 mb-3">
                     <div class="row no-gutters">
                       <div class="col-md-4">
-                        <img src="{{cartItem.Product?.ImagePath}}" class="card-img" >
+                        <img src="{{cartItem.Product.ImagePath}}" class="card-img" >
                       </div>
                       <div class="col-md-8">
                         <div class="card-body">
-                          <h5 class="card-title">{{cartItem.Product?.Name}}</h5>
+                          <h5 class="card-title">{{cartItem.Product.Name}}</h5>
                           <p class="card-text">Adet : {{cartItem.Quantity}}</p>
                           <p class="card-text">Ücret: {{cartItem.TotalPrice}}</p>
                         </div>
                       </div>
+                      <button class="btn btn-danger" >Ürünü İptal Et</button>
                     </div>
                   </div>
                 </div>
                 <h5 class="card-title text-center display-6">Toplam Tutar: {{ order.TotalPrice }}</h5>
-                <button class="btn btn-danger" >Siparişi İptal Et</button>
+                <button class="btn btn-danger" (click)="cancelOrder(order.Id)">Siparişi İptal Et</button>
               </div>
             </div>
           </div>
