@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
+import { first } from 'rxjs';
 import { CartList } from '../model/Cart.DataSource';
+import { UserList } from '../model/User.DataSource';
+import { authUser } from '../model/UserAuth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +11,38 @@ import { CartList } from '../model/Cart.DataSource';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  isAnyUserAuthentication:boolean=false;
+  FirstName:any='';
+  LastName:any='';
+
+  constructor(private router: Router) { }
+
+  checkAnyUserAuthentication(){
+    if(authUser.length>0){
+      this.isAnyUserAuthentication=true;
+      this.FirstName=authUser[0].FirstName;
+      this.LastName=authUser[0].LastName;
+      return this.isAnyUserAuthentication;
+    }
+    else{
+      this.isAnyUserAuthentication=false;
+      return this.isAnyUserAuthentication;
+    }
+  }
+
   CartLength(){
-    return CartList.filter(x=>x.Status==true).length;
+    if (authUser.length > 0)
+      return CartList.filter(x => x.Status == true && x.user == authUser[0]).length; //otantike olan
+    else
+      return CartList.filter(x => x.Status == true && x.user==UserList[2]).length; //guest
+  }
+
+  logOut(){
+    for (var i = authUser.length; i > 0; i--) {
+ 
+     authUser.pop();
+      
+     }
+     this.router.navigate(['/login']);
   }
 }

@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Cart } from '../model/Cart';
 import { CartList } from '../model/Cart.DataSource';
 import { Product } from '../model/Product';
+import { User } from '../model/User';
+import { UserList } from '../model/User.DataSource';
+import { authUser } from '../model/UserAuth';
 import { ProductsService } from '../products.service';
 
 @Component({
@@ -46,15 +49,19 @@ export class ProductDetailComponent implements OnInit {
       if (item.Product?.Id == product?.Id) this.isNewProduct = false;
     })
 
-    if (this.isNewProduct){
+    if (this.isNewProduct) {
 
-      CartList.push(new Cart(CartList.length + 1, product, quantity, Number(product?.UnitPrice) * Number(quantity), true));
+      if (authUser.length > 0) //sistemde kullanıcı varsa
+        CartList.push(new Cart(CartList.length + 1, authUser[0], product, quantity, Number(product?.UnitPrice) * Number(quantity), true));
+      else { //sistemde kullanıcı yoksa default guest user veriyoruz
+        CartList.push(new Cart(CartList.length + 1, UserList[2] , product, quantity, Number(product?.UnitPrice) * Number(quantity), true));
+      }
 
-      this.basketCounter=1;
+      this.basketCounter = 1;
 
     }
     else {
-      this.index = CartList.findIndex((item) => item.Product?.Id == product?.Id);
+      this.index = CartList.filter((cart) => cart.Status == true).findIndex((item) => item.Product?.Id == product?.Id);
 
       //stock control
       if (Number(CartList[this.index].Quantity) + Number(quantity) <= Number(product?.Stock)) {
@@ -63,7 +70,7 @@ export class ProductDetailComponent implements OnInit {
 
         CartList[this.index].TotalPrice = Number(CartList[this.index].TotalPrice) + Number(product?.UnitPrice) * Number(quantity);
 
-        this.basketCounter=1;
+        this.basketCounter = 1;
 
       }
       else alert('error')

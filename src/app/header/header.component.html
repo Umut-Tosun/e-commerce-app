@@ -24,20 +24,41 @@
           <a class="nav-link fs-5" href="#">Ürünler</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link fs-5" href="#">Kullanıcılar</a>
+          <a class="nav-link fs-5" href="#" >Kategoriler</a>
         </li>
         <li class="nav-item">
           <a class="nav-link fs-5" href="#" routerLink="./card">Sepetim ({{CartLength()}})</a>
         </li>
       </ul>
-      <ul class="navbar-nav me-5">
+     
+      <ul class="navbar-nav me-5"  *ngIf="!checkAnyUserAuthentication(); else loggedOut">
         <li class="nav-item">
-          <a class="nav-link fs-5" href="#">Giriş Yap</a>
+          <a class="nav-link fs-5" href="#" routerLink="/login">Giriş Yap</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link fs-5" href="#">Kayıt Ol</a>
+          <a class="nav-link fs-5" href="#" routerLink="/register">Kayıt Ol</a>
         </li>
       </ul>
+      <ng-template #loggedOut>
+        <ul class="navbar-nav me-5">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle fs-5" href="#" id="dropdownCategories" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{FirstName+' '+LastName}}</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownCategories">
+              <li><a class="dropdown-item" href="#">Profilim</a></li>
+              <li><a class="dropdown-item" href="#" routerLink="/orderHistory">Siparişlerim</a></li>
+              <li><a class="dropdown-item" href="#">Kuponlarım</a></li>
+              <div class="dropdown-divider "></div>
+              <li><a class="dropdown-item text-danger" href="#">Çıkış Yap</a></li>
+            </ul>
+          </li>
+          
+            <button type="button" class="nav-link fs-5 btn btn-danger text-white btn-sm" (click)="logOut()">Çıkış Yap</button>
+          
+        </ul>
+      </ng-template>
+     
     </div>
   </div>
 </nav>
+
+
