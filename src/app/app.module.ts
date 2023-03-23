@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +12,14 @@ import { CardComponent } from './card/card.component';
 import { LoginComponent } from './login/login.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { RegisterComponent } from './register/register.component';
+import { FooterComponent } from './footer/footer.component';
+import { ProfileComponent } from './profile/profile.component';
+import { FormsModule } from '@angular/forms';
+import { registerLocaleData } from '@angular/common';
+import localeTr from '@angular/common/locales/tr';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
+
+registerLocaleData(localeTr);
 
 @NgModule({
   declarations: [
@@ -25,12 +33,16 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     OrderHistoryComponent,
     RegisterComponent,
+    FooterComponent,
+    ProfileComponent,
+    OrderDetailComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'tr' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

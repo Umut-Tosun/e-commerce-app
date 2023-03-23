@@ -1,56 +1,88 @@
-<div class="row">
-    <div class="col-md-8">
-        <div class="row">
-            <div class="col-md-6 mb-3" *ngFor="let cart of getCartList()">
-                <div class="card">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="{{cart.Product?.ImagePath}}" class="img-fluid">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title fs-4">{{cart.Product?.Name}}</h5>
-                                <p class="card-text">{{cart.Product?.Description}}</p>
-                                <p class="card-text fs-5"><strong>Stok: </strong>{{cart.Product?.Stock}}</p>
-
-
-                                <div style="display: flex;">
-                                    <p class="card-text fs-5"><strong>Adet: </strong></p>
-
-                                    <div class="ms-2">
-                                        <button class="btn btn-primary btn-sm" type="button" id="button-addon1"
-                                            (click)="minusBasket(cart.Product?.Id)">-</button>
-                                        <input type="number" min="1" max="{{cart.Product?.Stock}}" #Quantity
-                                            value="{{cart.Quantity}}" class="text-center bg-white text-primary" disabled
-                                            placeholder="" aria-label="Example text with button addon"
-                                            aria-describedby="button-addon1">
-                                        <button class="btn btn-primary btn-sm" type="button"
-                                            (click)="plusBasket(cart.Product?.Id)" id="button-addon1">+</button>
-                                    </div>
-                                </div>
-
-                                <p class="card-text fs-5 mt-3"><strong>Toplam Fiyat: </strong>{{cart.TotalPrice}}</p>
-                                <button class="btn btn-danger" (click)="removeCart(cart.Id)">Ürünü Sepetten
-                                    Çıkar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<section class="shoping-cart spad">
+    <div class="container">
+    <div class="row">
+    <div class="col-lg-12">
+    <div class="shoping__cart__table">
+    <table>
+    <thead>
+    <tr>
+    <th class="shoping__product">Ürünler</th>
+    <th>Fiyat</th>
+    <th>Adet</th>
+    <th>Tutar</th>
+    <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  *ngFor="let cart of getCartList()">
+    <td class="shoping__cart__item">
+    <img src="{{cart.Product.ImagePath}}" height="100px" alt="">
+    <h5>{{cart.Product.Name}}</h5>
+    </td>
+    <td class="shoping__cart__price">
+     {{cart.Product.UnitPrice}}₺ 
+    </td>
+    <td class="shoping__cart__quantity">
+    <div class="quantity">
+    <div class="pro-qty"><span class="dec qtybtn" (click)="minusBasket(cart.Product.Id)">-</span>
+    <input type="text" class="text-danger"  value="{{cart.Quantity}}">
+    <span class="inc qtybtn" (click)="plusBasket(cart.Product.Id)">+</span></div>
     </div>
-    <div class="col-md-4">
-        <div class="mt-3">
-            <p class="fs-5"><strong>Toplam Sepet Ücreti: {{getTotalPrice()}}</strong></p>
-            
-            <div *ngIf="checkAnyUserAuthentication(); else loggedOut">
-                <button class="btn btn-success btn-sm" (click)="confirmOrder()">Sepeti Onayla</button>
-            </div>
-            <ng-template #loggedOut>
-                <button class="btn btn-success btn-sm" routerLink="/login">Giriş Yap</button>
-              </ng-template>
+    </td>
+    <td class="shoping__cart__total">
+        {{cart.TotalPrice}}₺
+    </td>
+    <td class="shoping__cart__item__close">
+    <span class="icon_close"></span>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-lg-12">
+    <div class="shoping__cart__btns">
+    <a href="#" class="primary-btn cart-btn">Alışverişe Devam Et</a>
+    
+    </div>
+    </div>
+    <div class="col-lg-6">
+    <div class="shoping__continue">
+    <div class="shoping__discount">
+    <h5>İndirim Kuponları</h5>
+    <form action="#">
+    <input type="text" placeholder="Kupon Kodunuzu Giriniz">
+    <button type="submit" class="site-btn">Kupon Kodu Uygula</button>
+  
+    </form>
+  
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="shoping__checkout">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5>Sepet Toplam</h5>
               
-            <button class="btn btn-danger btn-sm ms-1" (click)="removeOrder()">Sepeti İptal Et</button>
+            </div>
+            <ul>
+                <li>Toplam Ücret<span>{{getTotalPrice()}}₺</span></li>
+                <li>İndirimli Fiyat<span>{{getTotalPrice()}}₺</span></li>
+            </ul>
+            <div class="d-flex justify-content-end">
+                <div *ngIf="checkAnyUserAuthentication(); else loggedOut">
+                    <a  class="primary-btn" (click)="confirmOrder()">Sepeti Onayla</a>
+                </div>
+                <ng-template #loggedOut>
+                    <button class="btn btn-success btn-sm" routerLink="/login">Giriş Yap</button>
+                  </ng-template>
+             
+                <a (click)="removeOrder()" class="btn btn-danger ms-2">Sepeti Boşalt</a>
+            </div>
         </div>
+    </div> 
     </div>
-</div>
+    </div>
+    </section>

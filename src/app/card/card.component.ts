@@ -1,3 +1,4 @@
+import { getLocaleDateTimeFormat } from '@angular/common';
 import { Component } from '@angular/core';
 import { empty } from 'rxjs';
 import { Cart } from '../model/Cart';
@@ -11,7 +12,7 @@ import { authUser } from '../model/UserAuth';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  styleUrls: ['../app.component.css']
 })
 export class CardComponent {
   totalPrice: number = 0;
@@ -56,12 +57,15 @@ export class CardComponent {
     })
     return this.totalPrice;
   }
-
+  currentDate?: Date;
   confirmOrder() {
-    OrderList.push(new Order(OrderList.length + 1, UserList[UserList.findIndex((user) => user == authUser[0])], CartList.filter(x => x.Status == true), this.totalPrice))
+    this.currentDate = new Date();
+
+    OrderList.push(new Order(OrderList.length + 1,this.currentDate, UserList[UserList.findIndex((user) => user == authUser[0])], CartList.filter(x => x.Status == true), this.totalPrice))
 
     CartList.filter(x => x.Status == true).forEach((cart) => {
       cart.Status = false;
+      cart.Product.Stock-=Number(cart.Quantity);
     })
   }
 
