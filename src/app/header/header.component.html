@@ -9,11 +9,16 @@
   </div>
   <div class="col-lg-6">
   <nav class="header__menu">
-  <ul>
-  <li><a href="index-2.html" routerLink="">Ana Sayfa</a></li>
-  <li ><a href="shop-grid.html">Ürünler</a></li>
-  <li><a href="blog.html">Kategoriler</a></li>
-  <li><a href="contact.html">Hakkımızda</a></li>
+  <ul  >
+  <li><a [hidden]="isAnyAdminAuthentication" href="index-2.html" routerLink="">Ana Sayfa</a></li>
+  <li ><a [hidden]="isAnyAdminAuthentication" href="shop-grid.html">Ürünler</a></li>
+  <li><a [hidden]="isAnyAdminAuthentication" href="blog.html">Kategoriler</a></li>
+  <li><a [hidden]="isAnyAdminAuthentication"  href="contact.html">Hakkımızda</a></li>
+  </ul>
+  <ul [hidden]="!isAnyAdminAuthentication">
+    <li><a href="index-2.html" routerLink="">Ana Sayfa</a></li>
+    <li ><a  routerLink="/admin-products">Ürünler</a></li>
+    <li><a routerLink="/add-category">Kategoriler</a></li>
   </ul>
   </nav>
   </div>
@@ -27,8 +32,9 @@
   <ng-template #loggedOut>
     <ul >
       <li>
-        <li><a routerLink="./card"><i class="fa fa-shopping-bag fs-3"></i> <span>{{CartLength()}}</span></a></li>
-        <li><a routerLink="./profile" class="text-dark"><i  class="fa fa-user fs-5 ms-2"></i> Profilim</a></li>
+        <li     [hidden]="isAnyAdminAuthentication"><a routerLink="./card"><i class="fa fa-shopping-bag fs-3"></i> <span>{{CartLength()}}</span></a></li>
+        <li><a  [hidden]="isAnyAdminAuthentication" routerLink="./profile" class="text-dark"><i  class="fa fa-user fs-5 ms-2"></i> Profilim</a></li>
+        <li><a  [hidden]="!isAnyAdminAuthentication" routerLink="./profile" class="text-dark"><i  class="fa fa-user fs-5 ms-2"></i> Admin</a></li>
         <a type="button" class="text-danger ms-2 " (click)="logOut()">Çıkış Yap</a>  
     </ul>
   </ng-template>

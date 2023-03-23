@@ -18,6 +18,12 @@ import { FormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
 import localeTr from '@angular/common/locales/tr';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
+import { AdminProductsComponent } from './admin-products/admin-products.component';
+import { AdminCategoriesComponent } from './admin-categories/admin-categories.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { EditCategoryComponent } from './edit-category/edit-category.component';
 
 registerLocaleData(localeTr);
 
@@ -36,6 +42,12 @@ registerLocaleData(localeTr);
     FooterComponent,
     ProfileComponent,
     OrderDetailComponent,
+    AddProductComponent,
+    AddCategoryComponent,
+    AdminProductsComponent,
+    AdminCategoriesComponent,
+    EditProductComponent,
+    EditCategoryComponent,
   ],
   imports: [
     BrowserModule,

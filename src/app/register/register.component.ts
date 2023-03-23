@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { User } from '../model/User';
 import { UserList } from '../model/User.DataSource';
 import { Router } from '@angular/router';
+import { RoleList } from '../model/Role.DataSource';
 
 @Component({
   selector: 'app-register',
@@ -27,7 +28,7 @@ export class RegisterComponent {
     else if(firstName==''||lastName=='') alert('İsim ve soyisim zorunlu alandır.')
     else{
 
-      UserList.push(new User(UserList.length+1,firstName,lastName,gmail,password,imagePath,[]))
+      UserList.push(new User(UserList.length+1,firstName,lastName,gmail,password,imagePath,[],RoleList[0]))
       this.router.navigate(['/login']);
 
     }

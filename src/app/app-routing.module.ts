@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddCategoryComponent } from './add-category/add-category.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { AdminCategoriesComponent } from './admin-categories/admin-categories.component';
+import { AdminProductsComponent } from './admin-products/admin-products.component';
 import { CardComponent } from './card/card.component';
+import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 import { LoginComponent } from './login/login.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
@@ -19,6 +25,12 @@ const routes: Routes = [
   {path:"profile",component:ProfileComponent},
   {path:"profile/order-history",component:OrderHistoryComponent},
   {path:"profile/order-history/order-detail/:id",component:OrderDetailComponent},
+  {path:"add-product",component:AddProductComponent},
+  {path:"add-category",component:AddCategoryComponent},
+  {path:"admin-products",component:AdminProductsComponent},
+  {path:"admin-categories",component:AdminCategoriesComponent},
+  {path:"edit-product/:id",component:EditProductComponent},
+  {path:"edit-category/:id",component:EditCategoryComponent},
 ]
 
 @NgModule({

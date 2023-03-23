@@ -4,6 +4,7 @@ import { CartList } from '../model/Cart.DataSource';
 import { UserList } from '../model/User.DataSource';
 import { authUser } from '../model/UserAuth';
 import { Router } from '@angular/router';
+import { RoleList } from '../model/Role.DataSource';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   isAnyUserAuthentication:boolean=false;
+  isAnyAdminAuthentication:boolean=false;
   FirstName:any='';
   LastName:any='';
 
@@ -22,6 +24,8 @@ export class HeaderComponent {
       this.isAnyUserAuthentication=true;
       this.FirstName=authUser[0].FirstName;
       this.LastName=authUser[0].LastName;
+      if(authUser[0].Role==RoleList[1]) {this.isAnyAdminAuthentication=true;
+      }
       return this.isAnyUserAuthentication;
     }
     else{

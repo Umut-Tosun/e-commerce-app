@@ -1,0 +1,31 @@
+
+  <section >
+    <div class="container py-5 bg-light">
+        <button class="btn btn-success mb-3" routerLink="/add-product">Yeni Ürün Girişi</button>
+        <table class="table table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Ürün Adı</th>
+                <th scope="col">Kategori Adı</th>
+                <th scope="col">Birim Fiyat</th>
+                <th scope="col">Stok</th>
+                <th scope="col">Düzenle</th>
+                <th scope="col">Sil</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of getProducts()">
+                <th scope="row">{{product.Id}}</th>
+                <td>{{product.Name}}</td>
+                <td class="text-{{product.Category.Color}}">{{product.Category.Name}}</td>
+                <td>{{product.UnitPrice}}</td>
+                <td>{{product.Stock}}</td>
+                <td><a class="btn btn-warning " routerLink="/edit-product/{{product.Id}}">Düzenle</a></td>
+                <td><a class="btn btn-danger " (click)="removeProduct(product.Id)">Sil</a></td>
+              </tr>
+            </tbody>
+          </table>
+        
+    </div>
+</section>
