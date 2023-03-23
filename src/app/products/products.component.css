@@ -1,0 +1,6 @@
+.filter-item:hover {
+    border-bottom: 2px solid red;
+  }
+  .filter-item[data-filter=".oranges"]:hover {
+    border-bottom: 2px solid red;
+  }
