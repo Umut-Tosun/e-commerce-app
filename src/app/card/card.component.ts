@@ -17,6 +17,7 @@ import { authUser } from '../model/UserAuth';
 export class CardComponent {
   totalPrice: number = 0;
   isAnyUserAuthentication: boolean = false;
+  currentDate:any;
 
   checkAnyUserAuthentication() {
     if (authUser.length > 0) {
