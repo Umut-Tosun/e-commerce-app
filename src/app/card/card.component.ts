@@ -57,7 +57,7 @@ export class CardComponent {
     })
     return this.totalPrice;
   }
-  currentDate?: Date;
+
   confirmOrder() {
     this.currentDate = new Date();
 
