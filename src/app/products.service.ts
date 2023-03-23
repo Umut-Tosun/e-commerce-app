@@ -11,7 +11,10 @@ export class ProductsService {
   constructor() { }
 
   getProductList():Observable<Product[]>{
+    
     return of(ProductList.filter(x=>x.Stock>0));
+  
+   
   }
 
   getProductById(id:number):Observable<Product | undefined>{

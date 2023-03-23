@@ -1,25 +1,48 @@
 import { Component } from '@angular/core';
+import { CategoryList } from '../model/Category.DataSource';
 import { Product } from '../model/Product';
-import {ProductsService} from '../products.service'
+import { ProductList } from '../model/Product.DataSource';
+import { ProductsService } from '../products.service'
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['../app.component.css','products.component.css']
+  styleUrls: ['../app.component.css', 'products.component.css']
 })
 
 export class ProductsComponent {
-  productList:Product[]=[];
-  constructor(private productService:ProductsService){}
+  categoryId: any = -1;
+  productList: Product[] = [];
+  constructor(private productService: ProductsService) { }
 
-  ngOnInit():void{
+  
+  ngOnInit(): void {
     this.getProductsFromService();
   }
 
-   getProductsFromService():void{
-     this.productService.getProductList()
-     .subscribe(product=>{
-        this.productList=product;
-     });
-   }
+  //product list içini servisten dolduruyoruz.
+  getProductsFromService(): void {
+    this.productService.getProductList()
+      .subscribe(product => {
+        this.productList = product;
+      });
+  }
+
+
+  //ürünlerin üstüne kategorileri yazdırıyoruz
+  categoryList() {
+    return CategoryList;
+  }
+
+  //bu method kategori filtrelemesi saglıyor
+  filterProduct() {
+    if (this.categoryId == -1) return ProductList;
+    return ProductList.filter(x => x.Category.Id == this.categoryId);
+  }
+   
+  //kategori filtreleme için seçime id değiştiriyoruz
+  changeId(id: any) {
+    this.categoryId = id;
+
+  }
 
 }

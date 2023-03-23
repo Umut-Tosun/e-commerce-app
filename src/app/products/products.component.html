@@ -62,17 +62,14 @@
   </div>
   <div class="featured__controls">
     <ul>
-      <li class="filter-item" data-filter="*">Hepsi</li>
-      <li class="filter-item" data-filter=".oranges">Teknoloji</li>
-      <li class="filter-item" data-filter=".fresh-meat">Beyaz Eşya</li>
-      <li class="filter-item" data-filter=".vegetables">Giyim & Kuşam</li>
-      <li class="filter-item" data-filter=".fastfood">Petshop</li>
+      <a (click)="changeId(-1)" class="ms-3"><li  class="filter-item"  data-filter="*">Hepsi</li></a>
+    <a (click)="changeId(category.Id)" *ngFor="let category of categoryList()"  class="ms-3"><li  class="filter-item"  data-filter="*">{{category.Name}}</li></a>
     </ul>
   </div>
   </div>
   </div>
   <div class="row featured__filter" id="MixItUpE553B5">
-  <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat" *ngFor="let product of productList">
+  <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat" *ngFor="let product of filterProduct()">
   <div class="featured__item">
   <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg" style="background-image: url(&quot;{{product.ImagePath}}&quot;);">
   <ul class="featured__item__pic__hover">
