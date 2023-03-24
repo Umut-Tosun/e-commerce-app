@@ -31,7 +31,7 @@ export class CardComponent {
 
   getCartList() {
     if (authUser.length > 0)
-      return CartList.filter(x => x.Status == true && x.user == authUser[0]);
+      return CartList.filter(x => x.Status == true && x.user == authUser[0] );
     else
       return CartList.filter(x => x.Status == true && x.user == UserList[2]); //guest
   }
@@ -72,7 +72,7 @@ export class CardComponent {
 
   getTotalPrice() {
     this.totalPrice = 0;
-    CartList.filter((cart) => cart.Status == true).forEach((item: any) => {
+    CartList.filter((cart) => cart.Status == true && cart.user == authUser[0]).forEach((item: any) => {
       this.totalPrice -= -item.TotalPrice;
     })
     return this.totalPrice;
@@ -84,7 +84,7 @@ export class CardComponent {
 
       OrderList.push(new Order(OrderList.length + 1, this.currentDate, UserList[UserList.findIndex((user) => user == authUser[0])], CartList.filter(x => x.Status == true), this.totalPrice))
 
-      CartList.filter(x => x.Status == true).forEach((cart) => {
+      CartList.filter(x => x.Status == true && x.user == authUser[0]).forEach((cart) => {
         cart.Status = false;
         cart.Product.Stock -= Number(cart.Quantity);
       })
