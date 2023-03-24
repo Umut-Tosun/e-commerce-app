@@ -33,8 +33,8 @@ export class HomeproductComponent {
 
   //bu method kategori filtrelemesi saglıyor
   filterProduct() {
-    if (this.categoryId == -1) return ProductList;
-    return ProductList.filter(x => x.Category.Id == this.categoryId && x.Status==true);
+    if (this.categoryId == -1) return ProductList.filter(x=>x.Stock>0);
+    return ProductList.filter(x => x.Category.Id == this.categoryId && x.Status==true && x.Stock>0);
   }
    
   //kategori filtreleme için seçime id değiştiriyoruz
