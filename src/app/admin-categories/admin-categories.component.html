@@ -15,7 +15,7 @@
               <tr *ngFor="let category of getCategories()">
                 <th scope="row">{{category.Id}}</th>
                 <td>{{category.Name}}</td>
-                <td><a class="btn btn-warning " routerLink="/edit-product/{{category.Id}}">Düzenle</a></td>
+                <td><a class="btn btn-warning " routerLink="/edit-category/{{category.Id}}">Düzenle</a></td>
                 <td><a class="btn btn-danger " (click)="removeCategory(category.Id)">Sil</a></td>
               </tr>
             </tbody>

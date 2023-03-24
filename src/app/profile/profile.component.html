@@ -11,8 +11,9 @@
             </div>
         </div>
         <div class="row" *ngFor="let user of getUser()">
-            <div class="col-lg-4">
+            <div class="col-lg-4 mt-5 pt-1">
                 <div class="card mb-4">
+                    
                     <div class="card-body text-center">
                         <img src="{{user.ImagePath}}" alt="avatar" class="rounded-circle img-fluid"
                             style="width: 150px;">
@@ -24,162 +25,129 @@
                         </div>
                     </div>
                 </div>
-                <div class="card mb-4 mb-lg-0">
-                    <div class="card-body p-0">
-                        <ul class="list-group list-group-flush rounded-3">
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <i class="fas fa-globe fa-lg text-warning"></i>
-                                <p class="mb-0">https://mdbootstrap.com</p>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                                <p class="mb-0">mdbootstrap</p>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
-                                <p class="mb-0">@mdbootstrap</p>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
-                                <p class="mb-0">mdbootstrap</p>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
-                                <p class="mb-0">mdbootstrap</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        
             </div>
             <div class="col-lg-8">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0">İsim</p>
-                            </div>
-                            <div class="col-sm-9">
-
-                                <div class="form-group">
-                                    <p class="text-muted mb-0">{{user.FirstName}} {{user.LastName}}</p>
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Profil Bilgileri</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Şifre Değiştir</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"> 
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">İsim</p>
+                                    </div>
+                                    <div class="col-sm-9">
+        
+                                        <div class="form-group">
+                                            <input type="text" #firstName class="form-control" value="{{user.FirstName}}"/>
+                                        </div>
+                                    
+                                    </div>
                                 </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Soyisim</p>
+                                    </div>
+                                    <div class="col-sm-9">
+        
+                                        <div class="form-group">
+                                            <input type="text" #lastName class="form-control" value="{{user.LastName}}"/>
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">E-posta</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" #gmail class="form-control" value="{{user.Email}}"/>
+                                    </div>
+                                </div>
+                                <hr>
+            
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Görsel Yolu</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" #imagePath class="form-control" value="{{user.ImagePath}}"/>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="text-center mt-3">
+                                    <button class="btn btn-primary " (click)="editUserInformation(firstName.value,lastName.value,gmail.value,imagePath.value)">Profil Bilgilerimi Güncelle</button>
+                                </div>
+                            </div>
+        
+                        </div>
+                    
+                    </div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Eski Şifre</p>
+                                    </div>
+                                    <div class="col-sm-9">
+        
+                                        <div class="form-group">
+                                            <input type="password" #oldPassword class="form-control" />
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Yeni şifre</p>
+                                    </div>
+                                    <div class="col-sm-9">
+        
+                                        <div class="form-group">
+                                            <input type="password" #newPassword class="form-control" />
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Yeni Şifre Tekrar</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="password" #newPasswordConfirm  class="form-control" />
+                                    </div>
+                                </div>
+                                <hr>
+            
                                
+                                <div class="text-center mt-3">
+                                    <button class="btn btn-primary " (click)="editUserPassword(oldPassword.value,newPassword.value,newPassword.value)">Şifreyi Güncelle</button>
+                                </div>
                             </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0">Gmail</p>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0">{{user.Email}}</p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0">Telefon Numarası</p>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0">(+90) 553-989-80-71</p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0">Mobile</p>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0">(098) 765-4321</p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0">Adres</p>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0">İstanbul/Kartal,Cumhuriyet Mahallesi Sena Sokak Kat3 Daire4
-                                </p>
-                            </div>
-                        </div>
-                        <div class="text-center mt-3">
-                            <button class="btn btn-success ">Profil Bilgilerimi Güncelle</button>
+        
                         </div>
                     </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card mb-4 mb-md-0">
-                            <div class="card-body">
-                                <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project
-                                    Status
-                                </p>
-                                <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                                <div class="progress rounded mb-2" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card mb-4 mb-md-0">
-                            <div class="card-body">
-                                <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project
-                                    Status
-                                </p>
-                                <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                                <div class="progress rounded mb-2" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
                 </div>
             </div>
+            
+           
         </div>
     </div>
 </section>

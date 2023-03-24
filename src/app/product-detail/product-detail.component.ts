@@ -8,6 +8,7 @@ import { User } from '../model/User';
 import { UserList } from '../model/User.DataSource';
 import { authUser } from '../model/UserAuth';
 import { ProductsService } from '../products.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-detail',
@@ -16,7 +17,7 @@ import { ProductsService } from '../products.service';
 })
 export class ProductDetailComponent implements OnInit {
   @Input() product?: Product;
-
+  Swal = Swal;
   isNewProduct: boolean = true;
   maxBasketNumber: any;
   basketCounter = 1;
@@ -27,10 +28,6 @@ export class ProductDetailComponent implements OnInit {
     private productService: ProductsService,
     private route: ActivatedRoute,
     private router:Router) {
-     
-       
-     
-      
 
   }
 
@@ -57,10 +54,13 @@ export class ProductDetailComponent implements OnInit {
 
     if (this.isNewProduct) {
 
-      if (authUser.length > 0) //sistemde kullanıcı varsa
+      if (authUser.length > 0) {//sistemde kullanıcı varsa
         CartList.push(new Cart(CartList.length + 1, authUser[0], product, quantity, Number(product?.UnitPrice) * Number(quantity), true));
+        Swal.fire("Ürün Sepete Eklendi!", "Ürün Başarıyla Sepete Eklendi!", "success");
+      }
       else { //sistemde kullanıcı yoksa default guest user veriyoruz
         CartList.push(new Cart(CartList.length + 1, UserList[2], product, quantity, Number(product?.UnitPrice) * Number(quantity), true));
+        Swal.fire("Ürün Sepete Eklendi!", "Ürün Başarıyla Sepete Eklendi!", "success");
       }
 
       this.basketCounter = 1;
@@ -83,9 +83,10 @@ export class ProductDetailComponent implements OnInit {
         CartList[this.index].TotalPrice = Number(CartList[this.index].TotalPrice) + Number(product?.UnitPrice) * Number(quantity);
 
         this.basketCounter = 1;
+        Swal.fire("Ürün Adedi Arttırıldı!", "Ürün Adedi Başarıyla Arttırıldı!", "success");
 
       }
-      else alert('error')
+      else Swal.fire("Ürün Adedi Arttırılmadı!", "Ürün Stoğu Yetersiz!", "error");
     }
 
     console.log(CartList);

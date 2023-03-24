@@ -5,6 +5,7 @@ import { UserList } from '../model/User.DataSource';
 import { authUser } from '../model/UserAuth';
 import { Router } from '@angular/router';
 import { RoleList } from '../model/Role.DataSource';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header',
@@ -16,6 +17,7 @@ export class HeaderComponent {
   isAnyAdminAuthentication:boolean=false;
   FirstName:any='';
   LastName:any='';
+  Swal = Swal;
 
   constructor(private router: Router) { }
 
@@ -48,6 +50,7 @@ export class HeaderComponent {
      authUser.pop();
       
      }
+     Swal.fire("Sistemden çıkış yapıldı", "Çıkış yapıldı!", "success");
      this.router.navigate(['/login']);
   }
 }

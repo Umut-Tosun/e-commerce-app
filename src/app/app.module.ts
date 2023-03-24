@@ -24,6 +24,7 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
 import { AdminCategoriesComponent } from './admin-categories/admin-categories.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 registerLocaleData(localeTr);
 
@@ -52,7 +53,8 @@ registerLocaleData(localeTr);
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    SweetAlert2Module
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'tr' }],
   bootstrap: [AppComponent]

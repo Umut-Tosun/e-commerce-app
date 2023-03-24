@@ -6,6 +6,7 @@ import { ProductList } from '../model/Product.DataSource';
 import { RoleList } from '../model/Role.DataSource';
 import { authUser } from '../model/UserAuth';
 import { ProductsService } from '../products.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-product',
@@ -15,7 +16,8 @@ import { ProductsService } from '../products.service';
 export class EditProductComponent implements OnInit {
   @Input() product?: Product;
   index:any;
-
+  Swal = Swal;
+  
   constructor(
     private productService: ProductsService,
     private route: ActivatedRoute,
@@ -45,7 +47,7 @@ export class EditProductComponent implements OnInit {
    ProductList[this.index].Stock=stock;
    ProductList[this.index].ImagePath=iPath;
 
-   alert('Bilgiler Değiştirildi')
+   Swal.fire("Bilgiler Başarıyla Değiştirildi.", "Güncelleme Başarılı!", "success");
 
    this.router.navigate(['/admin-products'])
   }

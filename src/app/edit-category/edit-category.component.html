@@ -1,1 +1,51 @@
-<p>edit-category works!</p>
+<section>
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col-lg-12 col-md-8 ml-auto">
+                <div class="row align-items-center ">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-primary text-white text-center ">
+                                <h3>Ürün Bilgilerini Güncelle</h3>
+                            </div>
+                            <div class="card-body">
+                                <form action="">
+                                    <div class="form-group  text-center">
+                                        <label for="productname" class="fs-5">Kategori Adı :</label>
+                                        <input type="text" value="{{category?.Name}}" #name class="form-control fs-5" id="productname"
+                                            placeholder="Ürün Adın">                          
+                                    </div>
+                                    <div class="form-group mt-1 text-center">
+                                        <label for="productid"  class="fs-5">Kategori Açıklama:</label>
+                                        <textarea placeholder="Ürün Detay" value="{{category?.Description}}"    #desc class="form-control fs-5" rows="5"></textarea>
+                                    </div>
+                                    <div class="form-group row  text-center">
+                                        <div class="col-md-6">
+                                            <label  class="fs-5" for="productimage">Ürün Görsel Yolu:</label>
+                                            <input type="text"  value="" value="{{category?.ImagePath}}"   #iPath class="form-control fs-5" id="productimage">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label  class="fs-5" for="productcategory">Renk:</label>
+                                            <select   class="form-control fs-5" #color>
+                                                <option value="primary">mavi</option>
+                                                <option value="danger">kırmızı</option>
+                                                <option value="warning">sarı</option>
+                                                <option value="success">yeşil</option>
+                                                <option value="dark">siyah</option>
+                                                <option value="secondary">gri</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                   
+                                </form>
+                            </div>
+                            <div class="card-footer ">
+                                <button class="btn btn-primary btn-lg bg- mx-auto d-block" type="submit" (click)="editCategory(name.value,desc.value,iPath.value,color.value)" >Kategori Bilgilerini Güncelle</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    

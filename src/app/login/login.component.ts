@@ -4,6 +4,7 @@ import { authUser } from '../model/UserAuth';
 import { Router } from '@angular/router';
 import { CartList } from '../model/Cart.DataSource';
 import { RoleList } from '../model/Role.DataSource';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
   constructor(private router: Router) {
     if (authUser.length > 0){ this.router.navigate(['/profile']);}
    }
-
+   Swal = Swal;
   isLogin: boolean = false;
   login(gmail: any, password: any) {
     UserList.forEach((user) => {
@@ -32,7 +33,7 @@ export class LoginComponent {
          })
       }
     })
-    if(this.isLogin)alert('Giriş Yapıldı')
-    else alert('bilgiler hatalı')
+    if(this.isLogin) Swal.fire("Giriş Başarılı!", "Sisteme Giriş Yaptınız!", "success");
+    else Swal.fire("Giriş Başarısız!", "Bilgilerinizi Kontrol Ediniz!", "error");
   }
 }
