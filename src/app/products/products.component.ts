@@ -10,9 +10,13 @@ import { ProductsService } from '../products.service'
 })
 
 export class ProductsComponent {
+  activeCategoryId:any;
+  active: number = -1;
   categoryId: any = -1;
   productList: Product[] = [];
-  constructor(private productService: ProductsService) { }
+  constructor(private productService: ProductsService) {
+    this.activeCategoryId = -1;
+   }
 
   
   ngOnInit(): void {
@@ -42,6 +46,7 @@ export class ProductsComponent {
   //kategori filtreleme için seçime id değiştiriyoruz
   changeId(id: any) {
     this.categoryId = id;
+    this.activeCategoryId = id;
 
   }
 

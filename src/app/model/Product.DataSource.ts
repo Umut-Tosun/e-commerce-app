@@ -14,5 +14,7 @@ export const ProductList:Product[]=[
     {Id:4,Category:CategoryList[3],Name:"Yaş Köpek Maması",Description:"Test Açıklaması",ImagePath:"https://benimhayvanlarim.com/wp-content/uploads/2020/01/köpek-maması-300x200.jpg",UnitPrice:300,Stock:20,Status:true},
     {Id:5,Category:CategoryList[4],Name:"Erkek Mont",Description:"Test Açıklaması",ImagePath:"https://www.centone.com.tr/UserFiles/Fotograflar/thumbs/115045-300-200-jpg-300-200.jpg",UnitPrice:900,Stock:200,Status:true},
     {Id:6,Category:CategoryList[5],Name:"Delgi Matkap",Description:"Test Açıklaması",ImagePath:"https://i.hizliresim.com/qv92bgr.png",UnitPrice:2455,Stock:200,Status:true},
+    {Id:7,Category:CategoryList[0],Name:"Mac Air",Description:'Test Açıklaması',ImagePath:'https://st-troy.mncdn.com/mnresize/1500/1500/Content/media/ProductImg/original/mneh3tua-637909905129625630.jpg',UnitPrice:45000,Stock:90,Status:true},
+    {Id:8,Category:CategoryList[1],Name:'Elektrikli Süpürge',Description:'Test Açıklama',ImagePath:'https://cdn.cimri.io/image/1000x1000/boschbgcxwsiyahelektriklisprge_549764658.jpg',UnitPrice:4560,Stock:45,Status:true}
 ]
     

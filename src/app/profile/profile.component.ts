@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Product } from '../model/Product';
 import { ProductList } from '../model/Product.DataSource';
 import Swal from 'sweetalert2';
+import { UserList } from '../model/User.DataSource';
 
 @Component({
   selector: 'app-profile',
@@ -22,12 +23,16 @@ export class ProfileComponent {
     return authUser;
   }
   editUserInformation(firstName: any, lastName: any, gmail: any, iPath: any) {
-    this.index = ProductList.findIndex((user) => user.Id == authUser[0].Id)
+    console.log(UserList);
+    
+    this.index = UserList.findIndex((user) => user.Id == authUser[0].Id)
+    console.log(this.index);
+    
     if (gmail.length != '' && firstName != '' && lastName != '') {
-      authUser[this.index].FirstName = firstName;
-      authUser[this.index].LastName = lastName;
-      authUser[this.index].Email = gmail;
-      authUser[this.index].ImagePath = iPath;
+      UserList[this.index].FirstName = firstName;
+      UserList[this.index].LastName = lastName;
+      UserList[this.index].Email = gmail;
+      UserList[this.index].ImagePath = iPath;
 
       Swal.fire("Bilgiler Başarıyla Güncellendi", "Bilgiler Güncellendi!", "success");
     }
@@ -37,11 +42,11 @@ export class ProfileComponent {
 
   }
   editUserPassword(oldPassword:any,newPassword:any,newPasswordConfirm:any){
-    this.index = ProductList.findIndex((user) => user.Id == authUser[0].Id)
+    this.index = UserList.findIndex((user) => user.Id == authUser[0].Id)
 
-    if(authUser[this.index].Password==oldPassword){
+    if(UserList[this.index].Password==oldPassword){
       if(newPassword==newPasswordConfirm){
-        authUser[this.index].Password = newPassword;
+        UserList[this.index].Password = newPassword;
 
         Swal.fire("Şifre Başarıyla Güncellendi", "Şifre Güncellendi!", "success");
         this.logOut();

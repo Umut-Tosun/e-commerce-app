@@ -25,6 +25,10 @@ import { AdminCategoriesComponent } from './admin-categories/admin-categories.co
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactComponent } from './contact/contact.component';
+import { HomeComponent } from './home/home.component';
+import { HomeproductComponent } from './homeproduct/homeproduct.component';
 
 registerLocaleData(localeTr);
 
@@ -49,6 +53,10 @@ registerLocaleData(localeTr);
     AdminCategoriesComponent,
     EditProductComponent,
     EditCategoryComponent,
+    AboutUsComponent,
+    ContactComponent,
+    HomeComponent,
+    HomeproductComponent,
   ],
   imports: [
     BrowserModule,

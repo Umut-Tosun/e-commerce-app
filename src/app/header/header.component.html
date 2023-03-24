@@ -10,10 +10,10 @@
   <div class="col-lg-6">
   <nav class="header__menu">
   <ul  >
-  <li><a [hidden]="isAnyAdminAuthentication" href="index-2.html" routerLink="">Ana Sayfa</a></li>
-  <li ><a [hidden]="isAnyAdminAuthentication" href="shop-grid.html">Trendler</a></li>
-  <li><a [hidden]="isAnyAdminAuthentication" href="blog.html">İletişim</a></li>
-  <li><a [hidden]="isAnyAdminAuthentication"  href="contact.html">Hakkımızda</a></li>
+  <li><a [hidden]="isAnyAdminAuthentication"  routerLink="">Ana Sayfa</a></li>
+  <li><a [hidden]="isAnyAdminAuthentication" routerLink="/products">Ürünler</a></li>
+  <li><a [hidden]="isAnyAdminAuthentication" routerLink="/contact">İletişim</a></li>
+  <li><a [hidden]="isAnyAdminAuthentication" routerLink="/about" >Hakkımızda</a></li>
   </ul>
   <ul [hidden]="!isAnyAdminAuthentication">
     <li><a href="index-2.html" routerLink="">Ana Sayfa</a></li>

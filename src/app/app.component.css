@@ -73,7 +73,12 @@ h5 {
 h6 {
 	font-size: 16px;
 }
-
+.filter-item:hover {
+    border-bottom: 2px solid red;
+  }
+  .filter-item[data-filter=".oranges"]:hover {
+    border-bottom: 2px solid red;
+  }
 p {
 	font-size: 16px;
 	font-family: "Cairo", sans-serif;
