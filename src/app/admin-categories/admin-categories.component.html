@@ -1,1 +1,25 @@
-<p>admin-categories works!</p>
+
+<section >
+    <div class="container py-5 bg-light">
+        <button class="btn btn-success mb-3" routerLink="/add-category">Yeni Kategori Girişi</button>
+        <table class="table table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Kategori Adı</th>
+                <th scope="col">Düzenle</th>
+                <th scope="col">Sil</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let category of getCategories()">
+                <th scope="row">{{category.Id}}</th>
+                <td>{{category.Name}}</td>
+                <td><a class="btn btn-warning " routerLink="/edit-product/{{category.Id}}">Düzenle</a></td>
+                <td><a class="btn btn-danger " (click)="removeCategory(category.Id)">Sil</a></td>
+              </tr>
+            </tbody>
+          </table>
+        
+    </div>
+</section>

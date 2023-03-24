@@ -3,6 +3,7 @@ import { UserList } from '../model/User.DataSource';
 import { authUser } from '../model/UserAuth';
 import { Router } from '@angular/router';
 import { CartList } from '../model/Cart.DataSource';
+import { RoleList } from '../model/Role.DataSource';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,9 @@ import { CartList } from '../model/Cart.DataSource';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    if (authUser.length > 0){ this.router.navigate(['/profile']);}
+   }
 
   isLogin: boolean = false;
   login(gmail: any, password: any) {
@@ -21,7 +24,9 @@ export class LoginComponent {
       if (user.Email == gmail && user.Password == password) {
         authUser.push(user);
         this.isLogin = true;
-         this.router.navigate(['/card']);
+        if(authUser[0].Role==RoleList[0])  this.router.navigate(['/profile']);
+        else this.router.navigate(['/admin-products']);
+       
          CartList.filter(x=>x.user?.Id==2).forEach((item)=>{
           item.user=authUser[0];
          })

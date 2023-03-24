@@ -33,7 +33,7 @@ export class CardComponent {
     if (authUser.length > 0)
       return CartList.filter(x => x.Status == true && x.user == authUser[0]);
     else
-      return CartList.filter(x => x.Status == true &&x.user==UserList[2]); //guest
+      return CartList.filter(x => x.Status == true && x.user == UserList[2]); //guest
   }
 
   getUserList() {
@@ -45,9 +45,29 @@ export class CardComponent {
   }
 
   removeOrder() {
-    CartList.forEach((item) => {
-      item.Status = false;
-    })
+    if (authUser.length > 0) {
+      if (CartList.filter(x => x.Status == true && x.user == authUser[0]).length > 0) {
+        return CartList.filter(x => x.Status == true && x.user == authUser[0]).forEach((item) => {
+          item.Status = false;
+        }); //user
+      }
+      else {
+        alert('sepette ürün yok')
+      }
+    }
+    else {
+      if (CartList.filter(x => x.Status == true && x.user == authUser[2]).length > 0) {
+        return CartList.filter(x => x.Status == true && x.user == UserList[2]).forEach((item) => {
+          item.Status = false;
+        }); //guest
+      }
+      else {
+        alert('sepette ürün yok')
+      }
+
+    }
+
+
   }
 
   getTotalPrice() {
@@ -59,14 +79,19 @@ export class CardComponent {
   }
   currentDate?: Date;
   confirmOrder() {
-    this.currentDate = new Date();
+    if (this.totalPrice > 0) {
+      this.currentDate = new Date();
 
-    OrderList.push(new Order(OrderList.length + 1,this.currentDate, UserList[UserList.findIndex((user) => user == authUser[0])], CartList.filter(x => x.Status == true), this.totalPrice))
+      OrderList.push(new Order(OrderList.length + 1, this.currentDate, UserList[UserList.findIndex((user) => user == authUser[0])], CartList.filter(x => x.Status == true), this.totalPrice))
 
-    CartList.filter(x => x.Status == true).forEach((cart) => {
-      cart.Status = false;
-      cart.Product.Stock-=Number(cart.Quantity);
-    })
+      CartList.filter(x => x.Status == true).forEach((cart) => {
+        cart.Status = false;
+        cart.Product.Stock -= Number(cart.Quantity);
+      })
+    }
+    else {
+      alert('sepette ürün yok')
+    }
   }
 
   plusBasket(id: any) {

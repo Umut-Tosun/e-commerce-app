@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Cart } from '../model/Cart';
 import { CartList } from '../model/Cart.DataSource';
 import { Product } from '../model/Product';
+import { RoleList } from '../model/Role.DataSource';
 import { User } from '../model/User';
 import { UserList } from '../model/User.DataSource';
 import { authUser } from '../model/UserAuth';
@@ -24,7 +25,12 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(
     private productService: ProductsService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private router:Router) {
+     
+       
+     
+      
 
   }
 

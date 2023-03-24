@@ -30,7 +30,7 @@ export class ProductsComponent {
 
   //ürünlerin üstüne kategorileri yazdırıyoruz
   categoryList() {
-    return CategoryList;
+    return CategoryList.filter(x=>x.Status==true);
   }
 
   //bu method kategori filtrelemesi saglıyor

@@ -20,6 +20,7 @@ export class HeaderComponent {
   constructor(private router: Router) { }
 
   checkAnyUserAuthentication(){
+    this.isAnyAdminAuthentication=false;
     if(authUser.length>0){
       this.isAnyUserAuthentication=true;
       this.FirstName=authUser[0].FirstName;

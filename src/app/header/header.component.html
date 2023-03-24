@@ -11,14 +11,14 @@
   <nav class="header__menu">
   <ul  >
   <li><a [hidden]="isAnyAdminAuthentication" href="index-2.html" routerLink="">Ana Sayfa</a></li>
-  <li ><a [hidden]="isAnyAdminAuthentication" href="shop-grid.html">Ürünler</a></li>
-  <li><a [hidden]="isAnyAdminAuthentication" href="blog.html">Kategoriler</a></li>
+  <li ><a [hidden]="isAnyAdminAuthentication" href="shop-grid.html">Trendler</a></li>
+  <li><a [hidden]="isAnyAdminAuthentication" href="blog.html">İletişim</a></li>
   <li><a [hidden]="isAnyAdminAuthentication"  href="contact.html">Hakkımızda</a></li>
   </ul>
   <ul [hidden]="!isAnyAdminAuthentication">
     <li><a href="index-2.html" routerLink="">Ana Sayfa</a></li>
     <li ><a  routerLink="/admin-products">Ürünler</a></li>
-    <li><a routerLink="/add-category">Kategoriler</a></li>
+    <li><a routerLink="/admin-categories">Kategoriler</a></li>
   </ul>
   </nav>
   </div>
@@ -26,8 +26,8 @@
   <div class="header__cart">
   <ul *ngIf="!checkAnyUserAuthentication(); else loggedOut">
   <li><a routerLink="/card"><i class="fa fa-shopping-bag fs-3"></i> <span>{{CartLength()}}</span></a></li>
-  <li><a href="contact.html" class="text-danger ms-4" routerLink="/login">Giriş Yap</a></li>
-  <li><a href="contact.html" class="text-danger ms-2" routerLink="/register">Kayıt Ol</a></li>
+  <li><a  class="text-danger ms-4" routerLink="/login">Giriş Yap</a></li>
+  <li><a  class="text-danger ms-2" routerLink="/register">Kayıt Ol</a></li>
   </ul>
   <ng-template #loggedOut>
     <ul >

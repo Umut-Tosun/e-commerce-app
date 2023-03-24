@@ -15,7 +15,7 @@ export class AddCategoryComponent {
     else if(authUser[0].Role!=RoleList[1])this.router.navigate(['/login'])
    }
    addCategory(name:any,desc:any,iPath:any){
-     CategoryList.push(new Category(CategoryList.length+1,name,iPath,desc,[],''))
+     CategoryList.push(new Category(CategoryList.length+1,name,iPath,desc,[],'',true))
     this.router.navigate(['']);
     alert('Ürün Başarıyla Eklendi')
   }

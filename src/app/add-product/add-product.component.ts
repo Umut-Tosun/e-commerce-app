@@ -20,7 +20,7 @@ export class AddProductComponent {
    }
 
 getCategories(){
-  return CategoryList;
+  return CategoryList.filter(x=>x.Status==true);
 }
 addProduct(name:any,desc:any,uPrice:any,stock:any,iPath:any,cId:any){
   this.selectedCategory=CategoryList.find((c)=>c.Id==cId);
