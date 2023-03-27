@@ -27,7 +27,7 @@ export class LoginComponent {
         this.isLogin = true;
         if (authUser[0].Role == RoleList[0]) {
           this.router.navigate(['/profile']);
-          CartList.filter(x => x.user==UserList[2]).forEach((item) => {
+          CartList.filter(x => x.user==UserList[1]).forEach((item) => {
             item.user = authUser[0];
           })
         }
