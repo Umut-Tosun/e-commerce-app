@@ -72,7 +72,7 @@ export class CardComponent {
 
   getTotalPrice() {
     this.totalPrice = 0;
-    CartList.filter((cart) => cart.Status == true && cart.user == authUser[0] || cart.user == UserList[2]).forEach((item: any) => {
+    CartList.filter((cart) => cart.Status == true && cart.user == authUser[0] || cart.user == UserList[1]).forEach((item: any) => {
       this.totalPrice -= -item.TotalPrice;
     })
     return this.totalPrice;
