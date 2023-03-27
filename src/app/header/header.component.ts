@@ -41,7 +41,7 @@ export class HeaderComponent {
     if (authUser.length > 0)
       return CartList.filter(x => x.Status == true && x.user == authUser[0]).length; //otantike olan
     else
-      return CartList.filter(x => x.Status == true && x.user==UserList[2]).length; //guest
+      return CartList.filter(x => x.Status == true && x.user==UserList[1]).length; //guest
   }
 
   logOut(){

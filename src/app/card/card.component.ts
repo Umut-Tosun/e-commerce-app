@@ -33,7 +33,7 @@ export class CardComponent {
     if (authUser.length > 0)
       return CartList.filter(x => x.Status == true && x.user == authUser[0] );
     else
-      return CartList.filter(x => x.Status == true && x.user == UserList[2]); //guest
+      return CartList.filter(x => x.Status == true && x.user == UserList[1]); //guest
   }
 
   getUserList() {

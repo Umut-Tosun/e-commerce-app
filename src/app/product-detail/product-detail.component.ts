@@ -59,7 +59,7 @@ export class ProductDetailComponent implements OnInit {
         Swal.fire("Ürün Sepete Eklendi!", "Ürün Başarıyla Sepete Eklendi!", "success");
       }
       else { //sistemde kullanıcı yoksa default guest user veriyoruz
-        CartList.push(new Cart(CartList.length + 1, UserList[2], product, quantity, Number(product?.UnitPrice) * Number(quantity), true));
+        CartList.push(new Cart(CartList.length + 1, UserList[1], product, quantity, Number(product?.UnitPrice) * Number(quantity), true));
         Swal.fire("Ürün Sepete Eklendi!", "Ürün Başarıyla Sepete Eklendi!", "success");
       }
 
@@ -72,7 +72,7 @@ export class ProductDetailComponent implements OnInit {
         this.index = CartList.filter((cart) => cart.Status == true&&cart.user==authUser[0]).findIndex((item) => item.Product.Id == product?.Id);
       }
       else{
-        this.index = CartList.filter((cart) => cart.Status == true &&cart.user==UserList[2]).findIndex((item) => item.Product?.Id == product?.Id);
+        this.index = CartList.filter((cart) => cart.Status == true &&cart.user==UserList[1]).findIndex((item) => item.Product?.Id == product?.Id);
       }
 
       //stock control
